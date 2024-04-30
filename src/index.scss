@@ -1,0 +1,11 @@
+@use "./Styles/colors" as *;
+@import url("https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Annie+Use+Your+Telescope&family=Anton&family=Mea+Culpa&display=swap");
+@import "./Pages/Root/Root.scss";
+@import "./Components/NavBar/NavBar.scss";
+@import "./Components/Search/Search";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
