@@ -1,11 +1,33 @@
-import { useRef, useState } from "react";
+import { ChangeEvent, useState } from "react";
+import { useFetch } from "../../Hooks/useFetch";
+import SearchListItem from "./SearchListItem/SearchListItem";
+
+export type Book = {
+  title: string;
+  cover_edition_key: string;
+  author_name: string[];
+};
 
 const Search = () => {
-  const searchInput = useRef<HTMLInputElement>(null);
+  /* const searchInput = useRef<HTMLInputElement>(null); */
+  const [searchInput, setSearchInput] = useState("");
   const [searchContainer, setSearchContainer] = useState(false);
+  const [spinner, setSpinner] = useState(true);
 
-  const handleChange = () => {
-    if (searchInput.current?.value) {
+  let url = `https://openlibrary.org/search.json?title=${searchInput}`;
+  const { datan } = useFetch({
+    url,
+    searchInput,
+    searchContainer,
+    setSpinner,
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSpinner(true);
+    console.log(datan[0]);
+
+    setSearchInput(e.target.value);
+    if (e.target.value.length) {
       setSearchContainer(true);
     } else {
       setSearchContainer(false);
@@ -15,13 +37,26 @@ const Search = () => {
     <>
       <input
         className="search-icon"
-        ref={searchInput}
-        onChange={handleChange}
+        /* ref={searchInput} */
+        onChange={(e) => handleChange(e)}
         type="text"
         placeholder="Search..."
       />
 
-      {searchContainer && <div className="SearchContainer"></div>}
+      {searchContainer && (
+        <div className="SearchContainer">
+          {spinner ? "loading" : ""}
+          {datan.map((result) => {
+            return (
+              <SearchListItem
+                title={result.title}
+                cover_edition_key={result.cover_edition_key}
+                author_name={result.author_name}
+              />
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };

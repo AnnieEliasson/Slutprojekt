@@ -12,7 +12,7 @@ const NavBar = () => {
         <Search />
         {navlinks.map((navlink) => {
           return (
-            <li>
+            <li key={navlink}>
               <NavLink
                 to={`/${navlink.toLocaleLowerCase()}`}
                 className={({ isActive }) => (isActive ? "active" : "")}
