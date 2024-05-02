@@ -1,0 +1,13 @@
+.Book {
+  display: flex;
+  padding: 40px;
+
+  img {
+    border: 2px solid white;
+    border-radius: 8px;
+  }
+
+  .book-info {
+    padding: 40px;
+  }
+}

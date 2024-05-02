@@ -1,12 +1,13 @@
 .NavBar {
   width: 100vw;
-  height: 100px;
+  min-height: 100px;
   background-color: $transparent-black;
   color: $primary-text-color;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 40px;
+  padding: 0 40px;
   border-bottom: 1px solid black;
   text-shadow: 2px 2px 2px black;
 

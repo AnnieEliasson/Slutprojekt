@@ -4,6 +4,9 @@
 @import "./Components/NavBar/NavBar.scss";
 @import "./Components/Search/Search";
 @import "./Components/Search/SearchListItem/SearchListItem";
+@import "./Components/Modal/Modal";
+@import "./Pages/Search/SearchPage";
+@import "./Pages/Search/Book";
 
 * {
   margin: 0;

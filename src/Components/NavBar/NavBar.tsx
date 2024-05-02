@@ -10,6 +10,7 @@ const NavBar = () => {
 
       <ul>
         <Search />
+
         {navlinks.map((navlink) => {
           return (
             <li key={navlink}>

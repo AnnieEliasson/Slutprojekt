@@ -22,6 +22,7 @@ input {
   /* background-color: $transparent-black; */
   animation: slide-down 0.5s ease-in-out forwards;
   overflow-y: scroll;
+  overflow-x: hidden;
   padding-bottom: 100px;
 }
 

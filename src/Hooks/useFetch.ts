@@ -22,20 +22,16 @@ export const useFetch = ({
       const data = await result.json(); // data
 
       if (!ignore && searchInput) {
-        console.log(data.docs[0]);
-
         setData(data.docs);
         setSpinner(false);
       }
     };
 
     let ignore = false;
-
+    setData([]);
     if (!searchContainer) {
-      setData([]);
       setSpinner(true);
     } else {
-      setData([]);
       fetchSearch();
     }
     return () => {

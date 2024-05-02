@@ -1,9 +1,27 @@
 .Root {
-  background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.846)),
-    url("../../../public/bg.png");
-  background-size: cover;
-  background-position-y: bottom;
   width: 100vw;
   height: 100vh;
   padding: 0;
+  position: relative;
+  overflow: hidden;
+
+  .bg {
+    width: 100vw;
+    height: 100vh;
+    background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.846)),
+      url("../../../public/bg.png");
+    background-size: cover;
+    background-position-y: bottom;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    animation: zoom 5s ease-out forwards;
+  }
+}
+
+@keyframes zoom {
+  to {
+    transform: scale(1.08);
+  }
 }

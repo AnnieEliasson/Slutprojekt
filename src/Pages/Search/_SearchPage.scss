@@ -1,0 +1,17 @@
+.SearchPage {
+  width: 800px;
+  height: 100%;
+  background-color: $transparent-black;
+  transform: translateX(-100%);
+  color: white;
+}
+
+.show {
+  animation: slide-to-right 1s ease-out forwards;
+}
+
+@keyframes slide-to-right {
+  to {
+    transform: translateX(0);
+  }
+}

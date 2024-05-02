@@ -9,7 +9,6 @@ export type Book = {
 };
 
 const Search = () => {
-  /* const searchInput = useRef<HTMLInputElement>(null); */
   const [searchInput, setSearchInput] = useState("");
   const [searchContainer, setSearchContainer] = useState(false);
   const [spinner, setSpinner] = useState(true);
@@ -37,7 +36,6 @@ const Search = () => {
     <>
       <input
         className="search-icon"
-        /* ref={searchInput} */
         onChange={(e) => handleChange(e)}
         type="text"
         placeholder="Search..."
@@ -45,7 +43,7 @@ const Search = () => {
 
       {searchContainer && (
         <div className="SearchContainer">
-          {spinner ? "loading" : ""}
+          {spinner ? "loading..." : ""}
           {datan.map((result) => {
             return (
               <SearchListItem
