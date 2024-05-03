@@ -4,6 +4,17 @@
   background-color: $transparent-black;
   transform: translateX(-100%);
   color: white;
+  border-right: 1px solid black;
+  position: relative;
+
+  button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+    color: white;
+  }
 }
 
 .show {

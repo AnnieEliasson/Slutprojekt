@@ -6,6 +6,8 @@ export type Book = {
   title: string;
   cover_edition_key: string;
   author_name: string[];
+  first_publish_year: number;
+  first_sentence: string[];
 };
 
 const Search = () => {
@@ -50,6 +52,8 @@ const Search = () => {
                 title={result.title}
                 cover_edition_key={result.cover_edition_key}
                 author_name={result.author_name}
+                first_publish_year={result.first_publish_year}
+                first_sentence={result.first_sentence}
               />
             );
           })}

@@ -7,13 +7,21 @@ const Book = () => {
   return (
     <div className="Book">
       <img
-        src={`http://covers.openlibrary.org/b/olid/${state.activeBook.cover_edition_key}-L.jpg`}
+        className="large-img"
+        src={`http://covers.openlibrary.org/b/olid/${state.activeBook.cover_edition_key}-M.jpg`}
         alt=""
       />
 
       <div className="book-info">
         <h2>{state.activeBook.title}</h2>
-        <p>{state.activeBook.author_name}</p>
+        <p>First Publish: {state.activeBook.first_publish_year}</p>
+        {state.activeBook.first_sentence ? (
+          <p>First Sentence: {state.activeBook.first_sentence[0]} </p>
+        ) : (
+          ""
+        )}
+
+        <p>Author: {state.activeBook.author_name}</p>
       </div>
     </div>
   );

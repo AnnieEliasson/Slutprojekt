@@ -2,9 +2,14 @@
   display: flex;
   padding: 40px;
 
-  img {
+  .large-img {
     border: 2px solid white;
     border-radius: 8px;
+    height: 300px;
+    width: auto;
+    background-image: url("../../Assets/loader-2.gif");
+    background-position: center;
+    background-size: cover;
   }
 
   .book-info {

@@ -5,13 +5,15 @@ type PropList = {
   children: React.ReactNode;
 };
 
-type Action = { type: "SET"; payload: Book };
+type Action = { type: "SET"; payload: Book } | { type: "RESET"; payload: Book };
 
 const initialValue: State = {
   activeBook: {
-    title: "Donald Duck",
-    cover_edition_key: "OL7981435M",
-    author_name: ["Kenny"],
+    title: "",
+    author_name: [""],
+    cover_edition_key: "",
+    first_publish_year: 0,
+    first_sentence: [],
   },
 };
 type State = {
@@ -23,7 +25,10 @@ const reducer = (state: State, action: Action) => {
     case "SET":
       return { ...state, activeBook: { ...action.payload } };
 
-      break;
+    /* case "RESET":
+      console.log("här");
+
+      return { ...state, activeBook: { ...action.payload } }; */
 
     default:
       break;
