@@ -1,24 +1,30 @@
 .SearchPage {
-  width: 800px;
-  height: 100%;
+  width: 50%;
+  height: 80%;
+  background-color: rgba(36, 36, 31, 0.51);
   background-color: $transparent-black;
   transform: translateX(-100%);
   color: white;
-  border-right: 1px solid black;
+  border: 2px solid black;
+  border-radius: 8px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 
-  button {
+  .x-btn {
     position: absolute;
     top: 5px;
     right: 5px;
     background-color: transparent;
     border: none;
     color: white;
+    z-index: 1;
   }
 }
 
 .show {
-  animation: slide-to-right 1s ease-out forwards;
+  animation: slide-to-right 0.5s ease-out forwards;
 }
 
 @keyframes slide-to-right {

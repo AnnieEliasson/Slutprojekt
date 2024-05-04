@@ -1,18 +1,96 @@
 .Book {
   display: flex;
   padding: 40px;
+  background-color: $transparent-black;
+  width: 50%;
+  height: 80%;
+  transform: translateX(-100%);
+  position: absolute;
+  top: 110px;
+  left: 0px;
 
-  .large-img {
-    border: 2px solid white;
-    border-radius: 8px;
-    height: 300px;
-    width: auto;
-    background-image: url("../../Assets/loader-2.gif");
-    background-position: center;
-    background-size: cover;
+  .x-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    padding: 10px;
+    border: none;
+    color: white;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: rotate(180deg);
+      color: maroon;
+    }
+  }
+
+  .bookmark {
+    position: absolute;
+    top: -4px;
+    right: 50px;
+    width: 30px;
+    height: 150px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 65%);
+    border: 1px solid black;
+    border-radius: 3px 3px 0 0;
+    background-color: maroon;
+  }
+
+  .left {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .large-img {
+      border: 2px solid white;
+      border-radius: 8px;
+      height: 300px;
+      width: auto;
+      background-image: url("../../Assets/loader-2.gif");
+      background-position: center;
+      background-size: cover;
+    }
   }
 
   .book-info {
     padding: 40px;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      li {
+        margin-bottom: 10px;
+
+        h2 {
+          font-size: 2.2rem;
+        }
+
+        span {
+          color: rgb(165, 220, 233);
+          font-size: 1.2rem;
+          margin: 10px;
+        }
+
+        .sentence {
+          color: white;
+          width: 100%;
+          margin: 10px;
+        }
+      }
+    }
+  }
+}
+
+.show {
+  animation: slide-to-right 0.5s ease-out forwards;
+}
+
+@keyframes slide-to-right {
+  to {
+    transform: translateX(0);
   }
 }

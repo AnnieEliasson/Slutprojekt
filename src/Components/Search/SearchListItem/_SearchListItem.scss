@@ -13,6 +13,7 @@
   margin-bottom: 5px;
   transform: translateX(30px);
   position: relative;
+  margin-top: 10px;
 
   &:hover {
     transform: translateX(0px);
@@ -24,9 +25,15 @@
     height: 140px;
     min-width: 100px;
     width: auto;
-    background-image: url("../../../Assets/loader-2.gif");
+    background-image: url("/loader-2.gif");
     background-position: center;
     background-size: cover;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
   .bookmark {
@@ -38,8 +45,4 @@
     top: 0px;
     right: 50px;
   }
-}
-
-.SearchListItem:nth-child(odd) {
-  background-color: rgba(36, 36, 31, 0.51);
 }

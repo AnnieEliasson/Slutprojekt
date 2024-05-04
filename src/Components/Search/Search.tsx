@@ -1,14 +1,8 @@
 import { ChangeEvent, useState } from "react";
 import { useFetch } from "../../Hooks/useFetch";
 import SearchListItem from "./SearchListItem/SearchListItem";
-
-export type Book = {
-  title: string;
-  cover_edition_key: string;
-  author_name: string[];
-  first_publish_year: number;
-  first_sentence: string[];
-};
+import Book from "../../Pages/Search/Book";
+import SearchPage from "../../Pages/Search/SearchPage";
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -43,9 +37,12 @@ const Search = () => {
         placeholder="Search..."
       />
 
+      <Book />
+
       {searchContainer && (
         <div className="SearchContainer">
           {spinner ? "loading..." : ""}
+
           {datan.map((result) => {
             return (
               <SearchListItem

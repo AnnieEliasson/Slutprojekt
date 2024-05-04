@@ -1,11 +1,13 @@
 import React, { createContext, useReducer } from "react";
-import { Book } from "../Components/Search/Search";
+import Favorites from "../Pages/Favorites/Favorites";
 
 type PropList = {
   children: React.ReactNode;
 };
 
-type Action = { type: "SET"; payload: Book } | { type: "RESET"; payload: Book };
+type Action =
+  | { type: "SET"; payload: Book }
+  | { type: "ADD_FAVORITE"; payload: Book };
 
 const initialValue: State = {
   activeBook: {
@@ -15,9 +17,21 @@ const initialValue: State = {
     first_publish_year: 0,
     first_sentence: [],
   },
+  favorites: [],
 };
+
+export type Book = {
+  title: string;
+  cover_edition_key: string;
+  author_name: string[];
+  first_publish_year: number;
+  first_sentence: string[];
+  favorite?: boolean;
+};
+
 type State = {
   activeBook: Book;
+  favorites: Book[];
 };
 
 const reducer = (state: State, action: Action) => {
@@ -25,10 +39,30 @@ const reducer = (state: State, action: Action) => {
     case "SET":
       return { ...state, activeBook: { ...action.payload } };
 
-    /* case "RESET":
-      console.log("här");
+    case "ADD_FAVORITE":
+      console.log(state.favorites);
 
-      return { ...state, activeBook: { ...action.payload } }; */
+      let test = state.favorites.filter(
+        (x) => x.cover_edition_key === action.payload.cover_edition_key
+      );
+
+      if (test[0]) {
+        console.log("finns redan");
+
+        return {
+          ...state,
+          favorites: [
+            ...state.favorites.filter(
+              (x) => x.cover_edition_key != action.payload.cover_edition_key
+            ),
+          ],
+        };
+      } else {
+        console.log("lägger till");
+
+        return { ...state, favorites: [...state.favorites, action.payload] };
+      }
+      return state;
 
     default:
       break;

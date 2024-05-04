@@ -4,12 +4,16 @@
 @import "./Components/NavBar/NavBar.scss";
 @import "./Components/Search/Search";
 @import "./Components/Search/SearchListItem/SearchListItem";
-@import "./Components/Modal/Modal";
 @import "./Pages/Search/SearchPage";
 @import "./Pages/Search/Book";
+@import "./Pages/Favorites/Favorites.scss";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
 }

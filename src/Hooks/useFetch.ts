@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Book } from "../Components/Search/Search";
+import { Book } from "../ContextProvider/BookContextProvider";
 
 type PropList = {
   url: string;

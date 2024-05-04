@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { Book } from "../Search";
 import { useContext } from "react";
-import { BookContext } from "../../../ContextProvider/BookContextProvider";
+import {
+  Book,
+  BookContext,
+} from "../../../ContextProvider/BookContextProvider";
 
 const SearchListItem = ({
   title,
@@ -13,6 +15,8 @@ const SearchListItem = ({
   const { dispatch } = useContext(BookContext);
 
   const handleClick = () => {
+    console.log("clicked");
+
     /* dispatch({
       type: "RESET",
       payload: {
@@ -22,8 +26,8 @@ const SearchListItem = ({
       },
     }); */
 
-    const searchPage = document.querySelector(".SearchPage") as HTMLElement;
-    searchPage.classList.add("show");
+    const book = document.querySelector(".Book") as HTMLElement;
+    book.classList.add("show");
     dispatch({
       type: "SET",
       payload: {
@@ -38,9 +42,9 @@ const SearchListItem = ({
 
   return (
     cover_edition_key && (
-      <Link
+      <div
         className="search-link"
-        to={`/search/${cover_edition_key}`}
+        /* to={`/search/${cover_edition_key}`} */
         onClick={() => handleClick()}
       >
         <div key={cover_edition_key} className="SearchListItem">
@@ -53,11 +57,11 @@ const SearchListItem = ({
             <h2>{title}</h2>
             <p>Author: {author_name ? author_name.join(", ") : ""}</p>
             {/* <p>First Publish: year {first_publish_year}</p> */}
-            <button>add to favrites</button>
+            {/* <button>add to favrites</button> */}
           </div>
-          <div className="bookmark"></div>
+          {/* <div className="bookmark"></div> */}
         </div>
-      </Link>
+      </div>
     )
   );
 };

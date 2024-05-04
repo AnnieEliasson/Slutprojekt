@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { RemoveClass } from "../../Utility/utility";
+import Book from "./Book";
 
 const SearchPage = () => {
   const handleClick = () => {
@@ -10,8 +11,11 @@ const SearchPage = () => {
 
   return (
     <div className="SearchPage">
-      <button onClick={handleClick}>X</button>
-      <Outlet />
+      <button className="x-btn" onClick={handleClick}>
+        X
+      </button>
+      {/* <Outlet /> */}
+      <Book />
     </div>
   );
 };
