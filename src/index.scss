@@ -7,11 +7,18 @@
 @import "./Pages/Search/Book";
 @import "./Pages/Favorites/Favorites.scss";
 @import "./Components/Bookmark/Bookmark.scss";
+@import "./Components/CompletedForm/CompletedForm.scss";
+@import "./Pages/Completed/Completed.scss";
+@import "./Pages/Home/Home.scss";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  color: $primary-text-color;
 }
 
 ul {

@@ -1,0 +1,24 @@
+.Home {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    width: 500px;
+    text-align: center;
+    font-size: 2rem;
+    font-style: italic;
+    background-color: $transparent-black;
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: rgb(179, 179, 179);
+    text-shadow: 2px 2px 2px black;
+
+    span {
+      color: white;
+    }
+  }
+}

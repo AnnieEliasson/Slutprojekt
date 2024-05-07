@@ -5,7 +5,7 @@ type PropList = {
   url: string;
   searchInput: any;
   searchContainer: boolean;
-  setSpinner: any;
+  setSpinner?: any;
 };
 
 export const useFetch = ({
@@ -22,6 +22,8 @@ export const useFetch = ({
       const data = await result.json(); // data
 
       if (!ignore && searchInput) {
+        console.log(data.docs);
+
         setData(data.docs);
         setSpinner(false);
       }

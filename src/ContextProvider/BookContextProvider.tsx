@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import Completed from "../Pages/Completed/Completed";
 
 type PropList = {
   children: React.ReactNode;
@@ -7,7 +8,8 @@ type PropList = {
 type Action =
   | { type: "SET"; payload: Book }
   | { type: "ADD_FAVORITE"; payload: Book }
-  | { type: "REMOVE_FAVORITE"; payload: String };
+  | { type: "REMOVE_FAVORITE"; payload: String }
+  | { type: "ADD_COMPLETE"; payload: CompletedBook };
 
 const initialValue: State = {
   activeBook: {
@@ -18,6 +20,7 @@ const initialValue: State = {
     first_sentence: [],
   },
   favorites: [],
+  completed: [],
 };
 
 export type Book = {
@@ -29,9 +32,15 @@ export type Book = {
   favorite?: boolean;
 };
 
+export type CompletedBook = Book & {
+  review: string;
+  rating: number;
+};
+
 type State = {
   activeBook: Book;
   favorites: Book[];
+  completed: CompletedBook[];
 };
 
 const reducer = (state: State, action: Action) => {
@@ -56,6 +65,10 @@ const reducer = (state: State, action: Action) => {
       } else {
         return { ...state, favorites: [...state.favorites, action.payload] };
       }
+
+    case "ADD_COMPLETE": {
+      return { ...state, completed: [...state.completed, action.payload] };
+    }
 
     case "REMOVE_FAVORITE":
       return {
