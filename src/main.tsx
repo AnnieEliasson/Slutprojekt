@@ -6,9 +6,7 @@ import "./index.scss";
 import Home from "./Pages/Home/Home";
 import Favorites from "./Pages/Favorites/Favorites";
 import Completed from "./Pages/Completed/Completed";
-import SearchPage from "./Pages/Search/SearchPage";
 import BookContextProvider from "./ContextProvider/BookContextProvider";
-import Book from "./Pages/Search/Book";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +25,7 @@ const router = createBrowserRouter([
         path: "/Completed",
         element: <Completed />,
       },
-      {
+      /* {
         path: "/search",
         element: <SearchPage />,
         children: [
@@ -40,7 +38,7 @@ const router = createBrowserRouter([
             element: <Book />,
           },
         ],
-      },
+      }, */
     ],
   },
 ]);

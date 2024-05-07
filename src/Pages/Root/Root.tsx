@@ -1,6 +1,5 @@
 import NavBar from "../../Components/NavBar/NavBar";
 import { Outlet } from "react-router-dom";
-import SearchPage from "../Search/SearchPage";
 
 const Root = () => {
   return (

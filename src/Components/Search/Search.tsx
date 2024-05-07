@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { useFetch } from "../../Hooks/useFetch";
 import SearchListItem from "./SearchListItem/SearchListItem";
 import Book from "../../Pages/Search/Book";
-import SearchPage from "../../Pages/Search/SearchPage";
+import { Toggle } from "../../Utility/utility";
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -19,7 +19,6 @@ const Search = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSpinner(true);
-    console.log(datan[0]);
 
     setSearchInput(e.target.value);
     if (e.target.value.length) {
@@ -28,11 +27,22 @@ const Search = () => {
       setSearchContainer(false);
     }
   };
+
+  const handleClick = () => {
+    Toggle("SearchContainer", "hide");
+  };
+
+  const handleClickInput = () => {
+    Toggle("SearchContainer", "hide");
+  };
+
   return (
     <>
       <input
+        id="search-input"
         className="search-icon"
         onChange={(e) => handleChange(e)}
+        onClick={handleClickInput}
         type="text"
         placeholder="Search..."
       />
@@ -42,6 +52,10 @@ const Search = () => {
       {searchContainer && (
         <div className="SearchContainer">
           {spinner ? "loading..." : ""}
+          <button
+            className="hide-btn"
+            onClick={handleClick}
+          >{`Hide search results`}</button>
 
           {datan.map((result) => {
             return (

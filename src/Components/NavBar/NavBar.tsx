@@ -1,9 +1,19 @@
 import { NavLink } from "react-router-dom";
 import Search from "../Search/Search";
+import { RemoveClass } from "../../Utility/utility";
 
 const navlinks = ["Home", "Favorites", "Completed"];
 
 const NavBar = () => {
+  const handleClick = () => {
+    const searchContainer = document.querySelector(
+      ".SearchContainer"
+    ) as HTMLElement;
+
+    searchContainer.style.display = "none";
+    RemoveClass("Book", "show");
+  };
+
   return (
     <div className="NavBar">
       <h1>Enchanted Pages</h1>
@@ -17,6 +27,7 @@ const NavBar = () => {
               <NavLink
                 to={`/${navlink.toLocaleLowerCase()}`}
                 className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={handleClick}
               >
                 {navlink}
               </NavLink>

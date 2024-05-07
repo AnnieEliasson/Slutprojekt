@@ -1,20 +1,22 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { BookContext } from "../../ContextProvider/BookContextProvider";
 import { RemoveClass } from "../../Utility/utility";
 
 const Book = () => {
   const { state, dispatch } = useContext(BookContext);
 
+  const result = state.favorites.filter(
+    (x) => x.cover_edition_key === state.activeBook.cover_edition_key
+  );
+
   const handleClick = () => {
     dispatch({
       type: "ADD_FAVORITE",
-      payload: { ...state.activeBook, favorite: true },
+      payload: { ...state.activeBook },
     });
   };
 
   const handleClickClose = () => {
-    console.log("close");
-
     RemoveClass("Book", "show");
   };
 
@@ -23,7 +25,9 @@ const Book = () => {
       <button className="x-btn" onClick={handleClickClose}>
         X
       </button>
-      <div className="bookmark"></div>
+
+      {result[0] && <div className="bookmark"></div>}
+
       <ul className="left">
         <li>
           <img
@@ -33,7 +37,7 @@ const Book = () => {
           />
         </li>
         <li>
-          <button className="fav-btn" onClick={handleClick}>
+          <button className="fav-btn" onClick={() => handleClick()}>
             Add favorite
           </button>
         </li>

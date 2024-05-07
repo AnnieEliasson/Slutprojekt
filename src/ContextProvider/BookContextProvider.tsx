@@ -1,5 +1,4 @@
 import React, { createContext, useReducer } from "react";
-import Favorites from "../Pages/Favorites/Favorites";
 
 type PropList = {
   children: React.ReactNode;
@@ -7,7 +6,8 @@ type PropList = {
 
 type Action =
   | { type: "SET"; payload: Book }
-  | { type: "ADD_FAVORITE"; payload: Book };
+  | { type: "ADD_FAVORITE"; payload: Book }
+  | { type: "REMOVE_FAVORITE"; payload: String };
 
 const initialValue: State = {
   activeBook: {
@@ -40,15 +40,11 @@ const reducer = (state: State, action: Action) => {
       return { ...state, activeBook: { ...action.payload } };
 
     case "ADD_FAVORITE":
-      console.log(state.favorites);
-
       let test = state.favorites.filter(
         (x) => x.cover_edition_key === action.payload.cover_edition_key
       );
 
       if (test[0]) {
-        console.log("finns redan");
-
         return {
           ...state,
           favorites: [
@@ -58,10 +54,18 @@ const reducer = (state: State, action: Action) => {
           ],
         };
       } else {
-        console.log("lägger till");
-
         return { ...state, favorites: [...state.favorites, action.payload] };
       }
+
+    case "REMOVE_FAVORITE":
+      return {
+        ...state,
+        favorites: [
+          ...state.favorites.filter(
+            (x) => x.cover_edition_key !== action.payload
+          ),
+        ],
+      };
       return state;
 
     default:
