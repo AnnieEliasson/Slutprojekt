@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { BookContext } from "../../ContextProvider/BookContextProvider";
+import Bookmark from "../../Components/Bookmark/Bookmark";
 
 const Completed = () => {
   const { state } = useContext(BookContext);
@@ -10,11 +11,25 @@ const Completed = () => {
         {state.completed.map((x) => {
           return (
             <li className="completed-item" key={x.cover_edition_key}>
+              <Bookmark id={x.cover_edition_key} />
               <img
                 src={`http://covers.openlibrary.org/b/olid/${x.cover_edition_key}-M.jpg`}
                 alt=""
               />
-              {x.title} {x.review} {x.rating}
+              <ul className="info">
+                <li>
+                  <h2>{x.title}</h2>
+                </li>
+                <li>
+                  <span>Review:</span> {x.review}
+                </li>
+                <li>
+                  <span>Pages:</span> {x.pages}
+                </li>
+                <li>
+                  <span>Rating:</span> {x.rating}/5
+                </li>
+              </ul>
             </li>
           );
         })}

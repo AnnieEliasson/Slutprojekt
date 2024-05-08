@@ -14,10 +14,6 @@ const SearchListItem = ({
 }: Book) => {
   const { state, dispatch } = useContext(BookContext);
 
-  const result = state.favorites.filter(
-    (x) => x.cover_edition_key === cover_edition_key
-  );
-
   const handleClick = () => {
     const book = document.querySelector(".Book") as HTMLElement;
     book.classList.add("show");
@@ -35,9 +31,13 @@ const SearchListItem = ({
 
   return (
     cover_edition_key && (
-      <div className="search-link" onClick={() => handleClick()}>
-        <div key={cover_edition_key} className="SearchListItem">
-          {result[0] && <Bookmark />}
+      <div
+        key={cover_edition_key}
+        className="search-link"
+        onClick={() => handleClick()}
+      >
+        <div className="SearchListItem">
+          <Bookmark id={cover_edition_key} />
           <img
             src={`http://covers.openlibrary.org/b/olid/${cover_edition_key}-M.jpg`}
             alt=""

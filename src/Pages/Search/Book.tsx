@@ -2,13 +2,10 @@ import { useContext } from "react";
 import { BookContext } from "../../ContextProvider/BookContextProvider";
 import { RemoveClass, Toggle } from "../../Utility/utility";
 import CompletedForm from "../../Components/CompletedForm/CompletedForm";
+import Bookmark from "../../Components/Bookmark/Bookmark";
 
 const Book = () => {
   const { state, dispatch } = useContext(BookContext);
-
-  const result = state.favorites.filter(
-    (x) => x.cover_edition_key === state.activeBook.cover_edition_key
-  );
 
   const handleClick = () => {
     dispatch({
@@ -33,7 +30,7 @@ const Book = () => {
           X
         </button>
 
-        {result[0] && <div className="bookmark"></div>}
+        <Bookmark id={state.activeBook.cover_edition_key} />
 
         <ul className="left">
           <li>
@@ -80,7 +77,9 @@ const Book = () => {
 
             <li>
               <p>
-                <span>Author:</span> {state.activeBook.author_name.join(", ")}
+                <span>Author:</span>{" "}
+                {state.activeBook.author_name &&
+                  state.activeBook.author_name.join(", ")}
               </p>
             </li>
           </ul>

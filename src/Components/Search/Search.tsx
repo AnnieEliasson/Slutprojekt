@@ -6,14 +6,12 @@ import { Toggle } from "../../Utility/utility";
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState("");
-  const [searchContainer, setSearchContainer] = useState(true);
-  const [spinner, setSpinner] = useState(true);
+  const [spinner, setSpinner] = useState(false);
 
   let url = `https://openlibrary.org/search.json?title=${searchInput}`;
   const { datan } = useFetch({
     url,
     searchInput,
-    searchContainer,
     setSpinner,
   });
 
@@ -21,22 +19,24 @@ const Search = () => {
     setSpinner(true);
 
     setSearchInput(e.target.value);
-    if (e.target.value.length) {
+    if (e.target.value.length > 0) {
       /* setSearchContainer(true); */
       const test = document.querySelector(".SearchContainer") as HTMLElement;
       test.classList.add("show-search");
+      /* setSearchContainer(true); */
     } else {
-      setSearchContainer(false);
+      const test = document.querySelector(".SearchContainer") as HTMLElement;
+      test.classList.remove("show-search");
     }
   };
 
-  const handleClick = () => {
+  /* const handleClick = () => {
+    Toggle("SearchContainer", "show-search");
+  }; */
+
+  const handleClickInput = () => {
     Toggle("SearchContainer", "show-search");
   };
-
-  /* const handleClickInput = () => {
-    Toggle("SearchContainer", "hide");
-  }; */
 
   return (
     <>
@@ -44,23 +44,24 @@ const Search = () => {
         id="search-input"
         className="search-icon"
         onChange={(e) => handleChange(e)}
-        /* onClick={handleClickInput} */
+        onClick={handleClickInput}
         type="text"
         placeholder="Search..."
       />
 
+      {/* <button
+        className="hide-btn"
+        onClick={handleClick}
+      >{`Hide search results`}</button> */}
+
       <Book />
 
-      {searchContainer && (
-        <div className="SearchContainer">
-          {spinner ? <p className="loading">loading...</p> : ""}
-          <button
-            className="hide-btn"
-            onClick={handleClick}
-          >{`Hide search results`}</button>
+      <div className="SearchContainer">
+        {spinner ? <p className="loading">loading...</p> : ""}
 
-          {datan.map((result) => {
-            return (
+        {datan.map((result) => {
+          return (
+            <li key={result.cover_edition_key}>
               <SearchListItem
                 title={result.title}
                 cover_edition_key={result.cover_edition_key}
@@ -68,10 +69,10 @@ const Search = () => {
                 first_publish_year={result.first_publish_year}
                 first_sentence={result.first_sentence}
               />
-            );
-          })}
-        </div>
-      )}
+            </li>
+          );
+        })}
+      </div>
     </>
   );
 };

@@ -1,5 +1,4 @@
 import React, { createContext, useReducer } from "react";
-import Completed from "../Pages/Completed/Completed";
 
 type PropList = {
   children: React.ReactNode;
@@ -35,6 +34,7 @@ export type Book = {
 export type CompletedBook = Book & {
   review: string;
   rating: number;
+  pages: number;
 };
 
 type State = {

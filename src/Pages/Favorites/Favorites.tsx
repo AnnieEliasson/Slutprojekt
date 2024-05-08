@@ -9,7 +9,7 @@ const Favorites = () => {
       {state.favorites.map((b) => {
         return (
           <div className="Favorite" key={b.cover_edition_key}>
-            <Bookmark />
+            <Bookmark id={b.cover_edition_key} />
             <img
               className="large-img"
               src={`http://covers.openlibrary.org/b/olid/${b.cover_edition_key}-M.jpg`}
@@ -17,9 +17,9 @@ const Favorites = () => {
             />
             <ul>
               <li>{b.title}</li>
-              <li>{b.first_publish_year}</li>
-              <li>{b.first_sentence}</li>
-              <li>{b.author_name}</li>
+              <li>{b.first_publish_year && b.first_publish_year}</li>
+              <li>{b.first_sentence && b.first_sentence[0]}</li>
+              <li>{b.author_name && b.author_name}</li>
               <li>
                 <button
                   onClick={() =>
@@ -31,6 +31,7 @@ const Favorites = () => {
                 >
                   Remove Favorite
                 </button>
+                <button>Add to completed</button>
               </li>
             </ul>
           </div>

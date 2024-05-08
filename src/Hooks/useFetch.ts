@@ -3,7 +3,7 @@ import { Book } from "../ContextProvider/BookContextProvider";
 
 type PropList = {
   url: string;
-  searchInput: any;
+  searchInput: string;
   searchContainer: boolean;
   setSpinner?: any;
 };
@@ -18,12 +18,11 @@ export const useFetch = ({
 
   useEffect(() => {
     const fetchSearch = async () => {
+      setSpinner(true);
       const result = await fetch(url); // response
       const data = await result.json(); // data
 
       if (!ignore && searchInput) {
-        console.log(data.docs);
-
         setData(data.docs);
         setSpinner(false);
       }
@@ -31,11 +30,14 @@ export const useFetch = ({
 
     let ignore = false;
     setData([]);
-    if (!searchContainer) {
-      setSpinner(true);
-    } else {
+    if (searchInput) {
       fetchSearch();
     }
+
+    if (searchInput.length === 0) {
+      setSpinner(false);
+    }
+
     return () => {
       ignore = true;
     };

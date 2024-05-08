@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { ChangeEvent, useContext, useRef, useState } from "react";
 import {
   BookContext,
   CompletedBook,
@@ -12,9 +12,13 @@ const CompletedForm = () => {
     ...state.activeBook,
     review: "",
     rating: 0,
+    pages: 0,
   });
 
   const handleClickClose = () => {
+    if (textarea.current) {
+      textarea.current.value = "";
+    }
     Toggle("CompletedForm", "show-form");
   };
 
@@ -27,13 +31,31 @@ const CompletedForm = () => {
 
   const handleChange = () => {
     if (textarea.current?.value) {
-      console.log(textarea.current.value);
       setCompletedBook({
         ...state.activeBook,
         review: textarea.current?.value,
-        rating: 5,
+        rating: completedBook.rating,
+        pages: completedBook.pages,
       });
     }
+  };
+
+  const handleChangeRating = (e: ChangeEvent<HTMLSelectElement>) => {
+    setCompletedBook({
+      ...state.activeBook,
+      review: completedBook.review,
+      rating: Number(e.target.value),
+      pages: completedBook.pages,
+    });
+  };
+
+  const handleChangePages = (e: ChangeEvent<HTMLInputElement>) => {
+    setCompletedBook({
+      ...state.activeBook,
+      review: completedBook.review,
+      rating: completedBook.rating,
+      pages: Number(e.target.value),
+    });
   };
 
   const rating = [1, 2, 3, 4, 5];
@@ -46,15 +68,32 @@ const CompletedForm = () => {
         <h2>{state.activeBook.title}</h2>
         <p>Review</p>
         <textarea ref={textarea} onChange={handleChange}></textarea>
-        <ul>
-          {rating.map((x) => {
-            return (
-              <li key={x}>
-                <div className="point"></div>
-              </li>
-            );
-          })}
-        </ul>
+
+        <label htmlFor="rating">
+          Rating:{" "}
+          <select
+            onChange={(e) => handleChangeRating(e)}
+            name="rating"
+            id="rating"
+          >
+            {rating.map((x) => {
+              return (
+                <option key={x} value={x}>
+                  {x}
+                </option>
+              );
+            })}
+          </select>
+        </label>
+
+        <label htmlFor="pageInput">
+          Pages:{" "}
+          <input
+            onChange={(e) => handleChangePages(e)}
+            id="pagesInput"
+            type="number"
+          />
+        </label>
         <button
           onClick={() => {
             handleClick(), handleClickClose();
