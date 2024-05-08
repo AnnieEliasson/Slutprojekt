@@ -10,6 +10,12 @@ const NavBar = () => {
       ".SearchContainer"
     ) as HTMLElement;
 
+    const searchInput = document.querySelector(
+      "#search-input"
+    ) as HTMLInputElement;
+
+    searchInput.value = "";
+
     searchContainer.style.display = "none";
     RemoveClass("Book", "show");
   };

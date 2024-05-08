@@ -51,7 +51,7 @@ const Search = () => {
 
       {searchContainer && (
         <div className="SearchContainer">
-          {spinner ? "loading..." : ""}
+          {spinner ? <p className="loading">loading...</p> : ""}
           <button
             className="hide-btn"
             onClick={handleClick}
