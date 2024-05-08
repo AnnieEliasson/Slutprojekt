@@ -14,10 +14,11 @@
   transform: translateX(30px);
   position: relative;
   margin-top: 10px;
+  box-shadow: 0 0 10px black;
   cursor: pointer;
 
   &:hover {
-    transform: translateX(0px);
+    transform: translateX(5px);
   }
 
   img {
@@ -29,6 +30,7 @@
     background-image: url("/loader-2.gif");
     background-position: center;
     background-size: cover;
+    box-shadow: 0 0 10px black;
   }
 
   .info {

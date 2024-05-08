@@ -12,7 +12,7 @@ const SearchListItem = ({
   first_publish_year,
   first_sentence,
 }: Book) => {
-  const { state, dispatch } = useContext(BookContext);
+  const { dispatch } = useContext(BookContext);
 
   const handleClick = () => {
     const book = document.querySelector(".Book") as HTMLElement;

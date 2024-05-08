@@ -27,6 +27,8 @@
   transform: translateX(100%);
   z-index: 10;
   transition: all 0.5s ease-in-out;
+  border-left: 1px solid black;
+  box-shadow: 0 0 10px black;
 
   .loading {
     text-align: center;

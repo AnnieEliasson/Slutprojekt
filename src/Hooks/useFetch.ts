@@ -4,16 +4,10 @@ import { Book } from "../ContextProvider/BookContextProvider";
 type PropList = {
   url: string;
   searchInput: string;
-  searchContainer: boolean;
   setSpinner?: any;
 };
 
-export const useFetch = ({
-  url,
-  searchInput,
-  searchContainer,
-  setSpinner,
-}: PropList) => {
+export const useFetch = ({ url, searchInput, setSpinner }: PropList) => {
   const [datan, setData] = useState([] as Book[]);
 
   useEffect(() => {
