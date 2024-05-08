@@ -16,7 +16,7 @@ const NavBar = () => {
 
     searchInput.value = "";
 
-    searchContainer.style.display = "none";
+    searchContainer.classList.remove("show-search");
     RemoveClass("Book", "show");
   };
 

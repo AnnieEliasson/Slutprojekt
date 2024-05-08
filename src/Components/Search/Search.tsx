@@ -6,7 +6,7 @@ import { Toggle } from "../../Utility/utility";
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState("");
-  const [searchContainer, setSearchContainer] = useState(false);
+  const [searchContainer, setSearchContainer] = useState(true);
   const [spinner, setSpinner] = useState(true);
 
   let url = `https://openlibrary.org/search.json?title=${searchInput}`;
@@ -22,19 +22,21 @@ const Search = () => {
 
     setSearchInput(e.target.value);
     if (e.target.value.length) {
-      setSearchContainer(true);
+      /* setSearchContainer(true); */
+      const test = document.querySelector(".SearchContainer") as HTMLElement;
+      test.classList.add("show-search");
     } else {
       setSearchContainer(false);
     }
   };
 
   const handleClick = () => {
-    Toggle("SearchContainer", "hide");
+    Toggle("SearchContainer", "show-search");
   };
 
-  const handleClickInput = () => {
+  /* const handleClickInput = () => {
     Toggle("SearchContainer", "hide");
-  };
+  }; */
 
   return (
     <>
@@ -42,7 +44,7 @@ const Search = () => {
         id="search-input"
         className="search-icon"
         onChange={(e) => handleChange(e)}
-        onClick={handleClickInput}
+        /* onClick={handleClickInput} */
         type="text"
         placeholder="Search..."
       />
