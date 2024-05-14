@@ -1,9 +1,7 @@
 import { useContext } from "react";
-import {
-  Book,
-  BookContext,
-} from "../../../ContextProvider/BookContextProvider";
+import { BookContext } from "../../../ContextProvider/BookContextProvider";
 import Bookmark from "../../Bookmark/Bookmark";
+import { Book } from "../../../Types/Types";
 
 const SearchListItem = ({
   title,

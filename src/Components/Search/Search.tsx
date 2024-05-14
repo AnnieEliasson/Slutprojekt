@@ -2,12 +2,9 @@ import { ChangeEvent, useContext, useState } from "react";
 import { useFetch } from "../../Hooks/useFetch";
 import SearchListItem from "./SearchListItem/SearchListItem";
 import { Toggle } from "../../Utility/utility";
-import {
-  Author,
-  Book,
-  BookContext,
-} from "../../ContextProvider/BookContextProvider";
+import { BookContext } from "../../ContextProvider/BookContextProvider";
 import Books from "../../Pages/Search/Book";
+import { Book, Author } from "../../Types/Types";
 
 const Search = () => {
   const { dispatch } = useContext(BookContext);

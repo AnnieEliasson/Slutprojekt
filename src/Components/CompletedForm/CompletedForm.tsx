@@ -1,9 +1,7 @@
 import { ChangeEvent, useContext, useRef, useState } from "react";
-import {
-  BookContext,
-  CompletedBook,
-} from "../../ContextProvider/BookContextProvider";
+import { BookContext } from "../../ContextProvider/BookContextProvider";
 import { Toggle } from "../../Utility/utility";
+import { CompletedBook } from "../../Types/Types";
 
 const CompletedForm = () => {
   const { state, dispatch } = useContext(BookContext);
