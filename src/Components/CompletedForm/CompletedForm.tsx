@@ -67,7 +67,11 @@ const CompletedForm = () => {
         </button>
         <h2>{state.activeBook.title}</h2>
         <p>Review</p>
-        <textarea ref={textarea} onChange={handleChange}></textarea>
+        <textarea
+          id="textarea"
+          ref={textarea}
+          onChange={handleChange}
+        ></textarea>
 
         <label htmlFor="rating">
           Rating:{" "}
@@ -86,7 +90,7 @@ const CompletedForm = () => {
           </select>
         </label>
 
-        <label htmlFor="pageInput">
+        <label htmlFor="pagesInput">
           Pages:{" "}
           <input
             onChange={(e) => handleChangePages(e)}

@@ -1,22 +1,33 @@
 import { useEffect, useState } from "react";
-import { Book } from "../ContextProvider/BookContextProvider";
 
 type PropList = {
   url: string;
   searchInput: string;
   setSpinner?: any;
+  urlSwitch: boolean;
 };
 
-export const useFetch = ({ url, searchInput, setSpinner }: PropList) => {
-  const [datan, setData] = useState([] as Book[]);
+export const useFetch = ({
+  url,
+  searchInput,
+  setSpinner,
+  urlSwitch,
+}: PropList) => {
+  const [datan, setData] = useState([]);
+
+  if (urlSwitch) {
+    url = `https://openlibrary.org/search/authors.json?q=${searchInput}`;
+  }
 
   useEffect(() => {
     const fetchSearch = async () => {
       setSpinner(true);
-      const result = await fetch(url); // response
-      const data = await result.json(); // data
+      const result = await fetch(url);
+      const data = await result.json();
 
       if (!ignore && searchInput) {
+        console.log(data);
+
         setData(data.docs);
         setSpinner(false);
       }

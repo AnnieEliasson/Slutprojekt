@@ -8,7 +8,8 @@ type Action =
   | { type: "SET"; payload: Book }
   | { type: "ADD_FAVORITE"; payload: Book }
   | { type: "REMOVE_FAVORITE"; payload: String }
-  | { type: "ADD_COMPLETE"; payload: CompletedBook };
+  | { type: "ADD_COMPLETE"; payload: CompletedBook }
+  | { type: "TOGGLE_AUTHOR_FAVORITE"; payload: Author };
 
 const initialValue: State = {
   activeBook: {
@@ -20,6 +21,7 @@ const initialValue: State = {
   },
   favorites: [],
   completed: [],
+  favorite_authors: [],
 };
 
 export type Book = {
@@ -37,10 +39,18 @@ export type CompletedBook = Book & {
   pages: number;
 };
 
+export type Author = {
+  key: string;
+  name: string;
+  birth_date: string;
+  top_work: string;
+};
+
 type State = {
   activeBook: Book;
   favorites: Book[];
   completed: CompletedBook[];
+  favorite_authors: Author[];
 };
 
 const reducer = (state: State, action: Action) => {
@@ -78,6 +88,12 @@ const reducer = (state: State, action: Action) => {
             (x) => x.cover_edition_key !== action.payload
           ),
         ],
+      };
+
+    case "TOGGLE_AUTHOR_FAVORITE":
+      return {
+        ...state,
+        favorite_authors: [...state.favorite_authors, action.payload],
       };
       return state;
 

@@ -2,7 +2,7 @@
   background-color: rgb(233, 219, 196);
   padding-left: 5px;
   padding-right: 25px;
-  background-image: url("../../Assets/search-icon.svg");
+  background-image: url("./search-icon.svg");
   background-repeat: no-repeat;
   background-size: 20px;
   background-position: right;
@@ -10,6 +10,28 @@
   border: none;
   border-radius: 6px;
   box-shadow: inset 1px 1px 1px black, inset -1px -1px 2px white;
+}
+
+#search-dropdown {
+  background-color: rgb(233, 219, 196);
+  width: 65px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: inset 1px 1px 1px black, inset -1px -1px 2px white;
+  margin-right: -30px;
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+  margin-right: -30px;
+
+  label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .SearchContainer {
@@ -23,7 +45,7 @@
   overflow-y: scroll;
   overflow-x: hidden;
   padding-bottom: 100px;
-  padding-top: 50px;
+  padding-top: 10px;
   transform: translateX(100%);
   z-index: 10;
   transition: all 0.5s ease-in-out;
@@ -34,25 +56,25 @@
     text-align: center;
     font-size: 2rem;
   }
-}
 
-.hide-btn {
-  padding: 10px 10px 10px 10px;
-  background-color: $dark-grey;
-  color: $primary-text-color;
-  border: 2px solid white;
-  border-radius: 8px;
-  position: absolute;
-  top: 110px;
-  right: 430px;
-  z-index: 100;
-}
+  .x-btn {
+    position: sticky;
+    left: 540px;
+    top: 0;
+    background-color: $dark-grey;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 4px 4px 4px black;
 
-/* @keyframes slide-down {
-  to {
-    margin-right: 0;
+    &:hover {
+      color: maroon;
+    }
   }
-} */
+}
 
 .show-search {
   transform: translateX(0%);

@@ -1,18 +1,27 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { useFetch } from "../../Hooks/useFetch";
 import SearchListItem from "./SearchListItem/SearchListItem";
-import Book from "../../Pages/Search/Book";
 import { Toggle } from "../../Utility/utility";
+import {
+  Author,
+  Book,
+  BookContext,
+} from "../../ContextProvider/BookContextProvider";
+import Books from "../../Pages/Search/Book";
 
 const Search = () => {
+  const { dispatch } = useContext(BookContext);
+
   const [searchInput, setSearchInput] = useState("");
   const [spinner, setSpinner] = useState(false);
+  const [urlSwitch, setUrlSwitch] = useState(false);
 
   let url = `https://openlibrary.org/search.json?title=${searchInput}`;
   const { datan } = useFetch({
     url,
     searchInput,
     setSpinner,
+    urlSwitch,
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,26 +29,40 @@ const Search = () => {
 
     setSearchInput(e.target.value);
     if (e.target.value.length > 0) {
-      /* setSearchContainer(true); */
       const test = document.querySelector(".SearchContainer") as HTMLElement;
       test.classList.add("show-search");
-      /* setSearchContainer(true); */
     } else {
       const test = document.querySelector(".SearchContainer") as HTMLElement;
       test.classList.remove("show-search");
     }
   };
 
-  /* const handleClick = () => {
-    Toggle("SearchContainer", "show-search");
-  }; */
-
   const handleClickInput = () => {
     Toggle("SearchContainer", "show-search");
   };
 
+  const handleSearchOption = (e: ChangeEvent<HTMLSelectElement>) => {
+    if (e.target.value === "book") {
+      url = `https://openlibrary.org/search.json?title=${searchInput}`;
+      setUrlSwitch(false);
+    } else {
+      console.log("author url");
+      url = `https://openlibrary.org/search/authors.json?q=j%20k%20rowling`;
+      setUrlSwitch(true);
+    }
+  };
+
   return (
     <>
+      <select
+        onChange={(e) => handleSearchOption(e)}
+        name="test"
+        id="search-dropdown"
+      >
+        <option value="book">Book</option>
+        <option value="author">Author</option>
+      </select>
+
       <input
         id="search-input"
         className="search-icon"
@@ -49,29 +72,60 @@ const Search = () => {
         placeholder="Search..."
       />
 
-      {/* <button
-        className="hide-btn"
-        onClick={handleClick}
-      >{`Hide search results`}</button> */}
-
-      <Book />
+      <Books />
 
       <div className="SearchContainer">
+        <button
+          className="x-btn"
+          onClick={() => Toggle("SearchContainer", "show-search")}
+        >
+          X
+        </button>
         {spinner ? <p className="loading">loading...</p> : ""}
 
-        {datan.map((result) => {
-          return (
-            <li key={result.cover_edition_key}>
-              <SearchListItem
-                title={result.title}
-                cover_edition_key={result.cover_edition_key}
-                author_name={result.author_name}
-                first_publish_year={result.first_publish_year}
-                first_sentence={result.first_sentence}
-              />
-            </li>
-          );
-        })}
+        {!urlSwitch
+          ? datan.map((result: Book) => {
+              return (
+                <li key={result.cover_edition_key}>
+                  <SearchListItem
+                    title={result.title}
+                    cover_edition_key={result.cover_edition_key}
+                    author_name={result.author_name}
+                    first_publish_year={result.first_publish_year}
+                    first_sentence={result.first_sentence}
+                  />
+                </li>
+              );
+            })
+          : datan.map((result: Author) => {
+              return (
+                <li>
+                  <div className="SearchListItem">
+                    <img
+                      className="author"
+                      src={`https://covers.openlibrary.org/a/olid/${result.key}-M.jpg`}
+                      alt=""
+                    />
+
+                    <div className="info">
+                      <h2>{result.name}</h2>
+                      <p>Birth date: {result.birth_date}</p>
+                      <p>Top work: {result.top_work}</p>
+                      <button
+                        onClick={() => {
+                          dispatch({
+                            type: "TOGGLE_AUTHOR_FAVORITE",
+                            payload: result,
+                          });
+                        }}
+                      >
+                        Add to favorite
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
       </div>
     </>
   );

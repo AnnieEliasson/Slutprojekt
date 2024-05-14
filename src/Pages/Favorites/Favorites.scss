@@ -3,8 +3,8 @@
   height: 100%;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
   position: absolute;
   overflow-y: scroll;
@@ -14,6 +14,27 @@
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  .sort-btn-box {
+    display: flex;
+    gap: 10px;
+
+    button {
+      width: 150px;
+      height: 50px;
+      background-color: $dark-grey;
+      color: white;
+      border: 2px solid black;
+      border-radius: 8px;
+      box-shadow: 3px 3px 2px black;
+
+      &.active {
+        background-color: $dark-grey;
+        box-shadow: inset -1px -1px 1px white, inset 5px 5px 5px black;
+        border: 1px solid black;
+      }
+    }
   }
 
   .Favorite {
@@ -36,6 +57,13 @@
       border: 1px solid black;
       border-radius: 8px;
       box-shadow: 0 0 10px black;
+    }
+
+    .author {
+      background-image: url("/author.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 70px;
     }
 
     ul {
