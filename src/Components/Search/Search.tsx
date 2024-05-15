@@ -5,9 +5,10 @@ import { Toggle } from "../../Utility/utility";
 import { BookContext } from "../../ContextProvider/BookContextProvider";
 import Books from "../../Pages/Search/Book";
 import { Book, Author } from "../../Types/Types";
+import Bookmark from "../Bookmark/Bookmark";
 
 const Search = () => {
-  const { dispatch } = useContext(BookContext);
+  const { state, dispatch } = useContext(BookContext);
 
   const [searchInput, setSearchInput] = useState("");
   const [spinner, setSpinner] = useState(false);
@@ -98,6 +99,7 @@ const Search = () => {
               return (
                 <li>
                   <div className="SearchListItem">
+                    <Bookmark id={result.key} />
                     <img
                       className="author"
                       src={`https://covers.openlibrary.org/a/olid/${result.key}-M.jpg`}
@@ -109,6 +111,7 @@ const Search = () => {
                       <p>Birth date: {result.birth_date}</p>
                       <p>Top work: {result.top_work}</p>
                       <button
+                        className="favorite-btn"
                         onClick={() => {
                           dispatch({
                             type: "TOGGLE_AUTHOR_FAVORITE",

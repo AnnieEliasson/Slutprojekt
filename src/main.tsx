@@ -25,20 +25,6 @@ const router = createBrowserRouter([
         path: "/Completed",
         element: <Completed />,
       },
-      /* {
-        path: "/search",
-        element: <SearchPage />,
-        children: [
-          {
-            path: "/search/:id",
-            element: <Book />,
-          },
-          {
-            path: "/search/:id",
-            element: <Book />,
-          },
-        ],
-      }, */
     ],
   },
 ]);

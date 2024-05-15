@@ -6,11 +6,11 @@ export const reducer = (state: State, action: Action) => {
       return { ...state, activeBook: { ...action.payload } };
 
     case "ADD_FAVORITE":
-      let test = state.favorites.filter(
+      let result = state.favorites.filter(
         (x) => x.cover_edition_key === action.payload.cover_edition_key
       );
 
-      if (test[0]) {
+      if (result[0]) {
         return {
           ...state,
           favorites: [
@@ -38,10 +38,26 @@ export const reducer = (state: State, action: Action) => {
       };
 
     case "TOGGLE_AUTHOR_FAVORITE":
-      return {
-        ...state,
-        favorite_authors: [...state.favorite_authors, action.payload],
-      };
+      let exisitingAuthor = state.favorite_authors.filter(
+        (x) => x.key === action.payload.key
+      );
+
+      if (exisitingAuthor[0]) {
+        return {
+          ...state,
+          favorite_authors: [
+            ...state.favorite_authors.filter(
+              (x) => x.key !== action.payload.key
+            ),
+          ],
+        };
+      } else {
+        return {
+          ...state,
+          favorite_authors: [...state.favorite_authors, action.payload],
+        };
+      }
+
       return state;
 
     default:

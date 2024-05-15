@@ -1,14 +1,14 @@
 @use "./Styles/colors" as *;
 @import url("https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Annie+Use+Your+Telescope&family=Anton&family=Mea+Culpa&display=swap");
-@import "./Pages/Root/Root.scss";
-@import "./Components/NavBar/NavBar.scss";
+@import "./Pages/Root/Root";
+@import "./Components/NavBar/NavBar";
 @import "./Components/Search/Search";
 @import "./Components/Search/SearchListItem/SearchListItem";
 @import "./Pages/Search/Book";
-@import "./Pages/Favorites/Favorites.scss";
-@import "./Components/Bookmark/Bookmark.scss";
-@import "./Components/CompletedForm/CompletedForm.scss";
-@import "./Pages/Completed/Completed.scss";
+@import "./Pages/Favorites/Favorites";
+@import "./Components/Bookmark/Bookmark";
+@import "./Components/CompletedForm/CompletedForm";
+@import "./Pages/Completed/Completed";
 @import "./Pages/Home/Home.scss";
 
 * {
