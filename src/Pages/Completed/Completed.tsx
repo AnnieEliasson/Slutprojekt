@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { BookContext } from "../../ContextProvider/BookContextProvider";
 import Bookmark from "../../Components/Bookmark/Bookmark";
+import Rating from "../../Components/Rating/Rating";
 
 const Completed = () => {
   const { state } = useContext(BookContext);
@@ -27,8 +28,9 @@ const Completed = () => {
                   <span>Pages:</span> {x.pages}
                 </li>
                 <li>
-                  <span>Rating:</span> {x.rating}/5
+                  <span>Rating:</span> <Rating rating={x.rating} />
                 </li>
+                <li></li>
               </ul>
             </li>
           );

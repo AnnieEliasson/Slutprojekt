@@ -1,14 +1,12 @@
 import { useContext } from "react";
 import { BookContext } from "../../ContextProvider/BookContextProvider";
+import { useAverage } from "../../Hooks/useAverage";
 
 const Home = () => {
   const { state } = useContext(BookContext);
 
-  let totalPages = 0;
+  const { averagePages, totalPages, averageRatings } = useAverage();
 
-  state.completed.forEach((x) => {
-    totalPages = totalPages + x.pages;
-  });
   return (
     <div className="Home">
       <p>
@@ -18,6 +16,16 @@ const Home = () => {
         each turn of the page. Keep feeding your curiosity and exploring new
         worlds through the magic of reading!
       </p>
+      <div className="average-info">
+        <div>
+          Average pages per book:{" "}
+          <span>{averagePages ? averagePages : "0"}</span>
+        </div>
+
+        <div>
+          Average ratings: <span>{averageRatings ? averageRatings : "0"}</span>
+        </div>
+      </div>
     </div>
   );
 };

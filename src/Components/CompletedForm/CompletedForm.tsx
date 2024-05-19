@@ -2,6 +2,7 @@ import { ChangeEvent, useContext, useRef, useState } from "react";
 import { BookContext } from "../../ContextProvider/BookContextProvider";
 import { Toggle } from "../../Utility/utility";
 import { CompletedBook } from "../../Types/Types";
+import RatingController from "../Rating/RatingController";
 
 const CompletedForm = () => {
   const { state, dispatch } = useContext(BookContext);
@@ -86,6 +87,7 @@ const CompletedForm = () => {
               );
             })}
           </select>
+          <RatingController rating={completedBook.rating} />
         </label>
 
         <label htmlFor="pagesInput">

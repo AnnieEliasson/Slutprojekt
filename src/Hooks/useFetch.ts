@@ -26,8 +26,6 @@ export const useFetch = ({
       const data = await result.json();
 
       if (!ignore && searchInput) {
-        console.log(data);
-
         setData(data.docs);
         setSpinner(false);
       }

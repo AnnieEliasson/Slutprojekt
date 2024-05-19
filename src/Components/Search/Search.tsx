@@ -8,7 +8,7 @@ import { Book, Author } from "../../Types/Types";
 import Bookmark from "../Bookmark/Bookmark";
 
 const Search = () => {
-  const { state, dispatch } = useContext(BookContext);
+  const { dispatch } = useContext(BookContext);
 
   const [searchInput, setSearchInput] = useState("");
   const [spinner, setSpinner] = useState(false);
@@ -44,7 +44,6 @@ const Search = () => {
       url = `https://openlibrary.org/search.json?title=${searchInput}`;
       setUrlSwitch(false);
     } else {
-      console.log("author url");
       url = `https://openlibrary.org/search/authors.json?q=j%20k%20rowling`;
       setUrlSwitch(true);
     }
@@ -111,6 +110,7 @@ const Search = () => {
                       <p>Birth date: {result.birth_date}</p>
                       <p>Top work: {result.top_work}</p>
                       <button
+                        id={result.key}
                         className="favorite-btn"
                         onClick={() => {
                           dispatch({
@@ -119,7 +119,7 @@ const Search = () => {
                           });
                         }}
                       >
-                        Add to favorite
+                        add
                       </button>
                     </div>
                   </div>

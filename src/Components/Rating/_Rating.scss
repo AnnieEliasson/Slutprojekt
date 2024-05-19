@@ -1,0 +1,13 @@
+.Rating {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  display: inline-block;
+
+  .star-container {
+    display: flex;
+    color: goldenrod;
+  }
+}
