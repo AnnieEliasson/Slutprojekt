@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { BookContext } from "../../ContextProvider/BookContextProvider";
-import { RemoveClass, Toggle } from "../../Utility/utility";
-import CompletedForm from "../../Components/CompletedForm/CompletedForm";
-import Bookmark from "../../Components/Bookmark/Bookmark";
+import { BookContext } from "../../../ContextProvider/BookContextProvider";
+import { RemoveClass, Toggle } from "../../../Utility/utility";
+import CompletedForm from "../../CompletedForm/CompletedForm";
+import Bookmark from "../../Bookmark/Bookmark";
 
 const Book = () => {
   const { state, dispatch } = useContext(BookContext);

@@ -4,13 +4,13 @@
 @import "./Components/NavBar/NavBar";
 @import "./Components/Search/Search";
 @import "./Components/Search/SearchListItem/SearchListItem";
-@import "./Pages/Search/Book";
 @import "./Pages/Favorites/Favorites";
 @import "./Components/Bookmark/Bookmark";
 @import "./Components/CompletedForm/CompletedForm";
 @import "./Pages/Completed/Completed";
 @import "./Pages/Home/Home.scss";
 @import "./Components/Rating/Rating";
+@import "./Components/Search/Book/Book";
 
 * {
   margin: 0;

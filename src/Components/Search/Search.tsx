@@ -3,9 +3,9 @@ import { useFetch } from "../../Hooks/useFetch";
 import SearchListItem from "./SearchListItem/SearchListItem";
 import { Toggle } from "../../Utility/utility";
 import { BookContext } from "../../ContextProvider/BookContextProvider";
-import Books from "../../Pages/Search/Book";
 import { Book, Author } from "../../Types/Types";
 import Bookmark from "../Bookmark/Bookmark";
+import Books from "./Book/Book";
 
 const Search = () => {
   const { dispatch } = useContext(BookContext);
