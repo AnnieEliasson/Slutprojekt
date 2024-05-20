@@ -2,17 +2,17 @@
 
 Detta är en app där man kan söka på böcker. Man kan lägga till böcker och författare till sina favoriter och lägga till lästa böcker med betyg och en liten recention.
 
-# Tech
+## Tech
 
 React, vite, Typescript, sass,
 
-# Api
+## Api
 
-https://openlibrary.org/search/authors.json?q=${searchInput}
-https://openlibrary.org/search.json?title=${searchInput}
+- https://openlibrary.org/search/authors.json?q=${searchInput}
+- https://openlibrary.org/search.json?title=${searchInput}
 
-# Install
+## Install
 
-clone repo
-npm install
-npm run dev
+- clone repo
+- npm install
+- npm run dev
