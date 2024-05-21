@@ -29,11 +29,7 @@ const SearchListItem = ({
 
   return (
     cover_edition_key && (
-      <div
-        key={cover_edition_key}
-        className="search-link"
-        onClick={() => handleClick()}
-      >
+      <div className="search-link" onClick={() => handleClick()}>
         <div className="SearchListItem">
           <Bookmark id={cover_edition_key} />
           <img

@@ -3,7 +3,7 @@ type PropList = {
 };
 
 const Rating = ({ rating }: PropList) => {
-  const stars = [];
+  const stars: string[] = [];
   for (let index = 0; index < rating; index++) {
     stars.push("★");
   }

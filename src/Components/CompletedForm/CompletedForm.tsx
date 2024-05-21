@@ -10,7 +10,7 @@ const CompletedForm = () => {
   const [completedBook, setCompletedBook] = useState<CompletedBook>({
     ...state.activeBook,
     review: "",
-    rating: 0,
+    rating: 1,
     pages: 0,
   });
 
@@ -26,6 +26,11 @@ const CompletedForm = () => {
       type: "ADD_COMPLETE",
       payload: completedBook,
     });
+    setCompletedBook({ ...state.activeBook, review: "", rating: 1, pages: 0 });
+    const pagesInput = document.querySelector(
+      "#pagesInput"
+    ) as HTMLInputElement;
+    pagesInput.value = "";
   };
 
   const handleChange = () => {
@@ -39,15 +44,6 @@ const CompletedForm = () => {
     }
   };
 
-  const handleChangeRating = (e: ChangeEvent<HTMLSelectElement>) => {
-    setCompletedBook({
-      ...state.activeBook,
-      review: completedBook.review,
-      rating: Number(e.target.value),
-      pages: completedBook.pages,
-    });
-  };
-
   const handleChangePages = (e: ChangeEvent<HTMLInputElement>) => {
     setCompletedBook({
       ...state.activeBook,
@@ -57,7 +53,6 @@ const CompletedForm = () => {
     });
   };
 
-  const rating = [1, 2, 3, 4, 5];
   return (
     <div className="CompletedForm">
       <div className="form">
@@ -74,20 +69,11 @@ const CompletedForm = () => {
 
         <label htmlFor="rating">
           Rating:{" "}
-          <select
-            onChange={(e) => handleChangeRating(e)}
-            name="rating"
-            id="rating"
-          >
-            {rating.map((x) => {
-              return (
-                <option key={x} value={x}>
-                  {x}
-                </option>
-              );
-            })}
-          </select>
-          <RatingController rating={completedBook.rating} />
+          <RatingController
+            rating={completedBook.rating}
+            setCompletedBook={setCompletedBook}
+            completedBook={completedBook}
+          />
         </label>
 
         <label htmlFor="pagesInput">

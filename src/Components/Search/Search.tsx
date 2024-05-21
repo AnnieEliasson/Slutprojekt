@@ -96,7 +96,7 @@ const Search = () => {
             })
           : datan.map((result: Author) => {
               return (
-                <li>
+                <li key={result.key}>
                   <div className="SearchListItem">
                     <Bookmark id={result.key} />
                     <img
