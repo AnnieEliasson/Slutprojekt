@@ -16,3 +16,7 @@ React, vite, Typescript, sass,
 - clone repo
 - npm install
 - npm run dev
+
+## Created by
+
+Annie Eliasson
