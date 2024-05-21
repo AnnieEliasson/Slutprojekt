@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   p {
     width: 500px;
@@ -22,5 +23,25 @@
     span {
       color: white;
     }
+  }
+
+  .average-info {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    position: absolute;
+    bottom: 0;
+    font-size: 1.5rem;
+    animation: slide 20s linear infinite reverse;
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(-80%);
+  }
+  to {
+    transform: translateX(80%);
   }
 }

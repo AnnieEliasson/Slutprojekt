@@ -21,7 +21,6 @@ const Home = () => {
           Average pages per book:{" "}
           <span>{averagePages ? averagePages : "0"}</span>
         </div>
-
         <div>
           Average ratings: <span>{averageRatings ? averageRatings : "0"}</span>
         </div>
