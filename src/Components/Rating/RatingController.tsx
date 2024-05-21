@@ -1,4 +1,4 @@
-import { MouseEvent, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { BookContext } from "../../ContextProvider/BookContextProvider";
 import { CompletedBook } from "../../Types/Types";
 
