@@ -3,8 +3,7 @@
   height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   gap: 10px;
   position: absolute;
   overflow-y: scroll;
@@ -85,5 +84,23 @@
         margin-bottom: 20px;
       }
     }
+  }
+}
+
+.books,
+.authors {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+
+  .favorit-list-title {
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }

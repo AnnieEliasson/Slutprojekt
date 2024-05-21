@@ -19,7 +19,7 @@ const Favorites = () => {
 
   return (
     <div className="Favorites">
-      <div className="sort-btn-box">
+      {/* <div className="sort-btn-box">
         <button
           onClick={(e) => {
             setViewBook(!viewBook), handleClickBook(e);
@@ -45,14 +45,29 @@ const Favorites = () => {
       {viewAuthor &&
         state.favorite_authors.map((author) => {
           return <Favorite author={author} />;
-        })}
+        })} */}
 
-      {/* {state.favorite_authors.map((author) => {
-        return <Favorite author={author} />;
-      })}
-      {state.favorites.map((book) => {
-        return <Favorite book={book} />;
-      })} */}
+      {state.favorites.length ? (
+        <div className="books">
+          <h1 className="favorit-list-title">Favorite Books</h1>
+          {state.favorites.map((book) => {
+            return <Favorite book={book} />;
+          })}
+        </div>
+      ) : (
+        "No Favorit Books yet!"
+      )}
+
+      {state.favorite_authors.length ? (
+        <div className="authors">
+          <h1 className="favorit-list-title">Favorite Authors</h1>
+          {state.favorite_authors.map((author) => {
+            return <Favorite author={author} />;
+          })}
+        </div>
+      ) : (
+        "No Favorit Authors yet!"
+      )}
     </div>
   );
 };
