@@ -15,7 +15,7 @@ const Favorites = () => {
           })}
         </div>
       ) : (
-        "No Favorit Books yet!"
+        <h3 className="favorit-list-title">No Favorit Books yet!</h3>
       )}
 
       {state.favorite_authors.length ? (
@@ -26,7 +26,7 @@ const Favorites = () => {
           })}
         </div>
       ) : (
-        "No Favorit Authors yet!"
+        <h3 className="favorit-list-title">No Favorit Authors yet!</h3>
       )}
     </div>
   );

@@ -8,82 +8,24 @@
   position: absolute;
   overflow-y: scroll;
   padding-bottom: 100px;
-  /* padding-right: 100px; */
   padding-top: 20px;
 
   &::-webkit-scrollbar {
     display: none;
   }
+}
 
-  .sort-btn-box {
-    display: flex;
-    gap: 10px;
+button {
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  margin-right: 10px;
+  transition: 0.5s ease;
 
-    button {
-      width: 150px;
-      height: 50px;
-      background-color: $dark-grey;
-      color: white;
-      border: 2px solid black;
-      border-radius: 8px;
-      box-shadow: 3px 3px 2px black;
-
-      &.active {
-        background-color: $dark-grey;
-        box-shadow: inset -1px -1px 1px white, inset 5px 5px 5px black;
-        border: 1px solid black;
-      }
-    }
-  }
-
-  .Favorite {
-    display: flex;
-    border: 1px solid black;
-    border-radius: 8px;
-    background-color: $dark-grey;
-    width: 600px;
-    padding: 20px;
-    margin-left: 40px;
-    position: relative;
-    height: fit-content;
-    padding-right: 60px;
-    box-shadow: 0 0 10px black;
-
-    img {
-      height: 200px;
-      width: auto;
-      margin-right: 10px;
-      border: 1px solid black;
-      border-radius: 8px;
-      box-shadow: 0 0 10px black;
-    }
-
-    button {
-      background-color: transparent;
-      border: 1px solid white;
-      padding: 5px;
-      border-radius: 5px;
-      color: white;
-      margin-right: 10px;
-      transition: 0.5s ease;
-
-      &:hover {
-        background-color: gray;
-      }
-    }
-
-    .author {
-      background-image: url("/author.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 70px;
-    }
-
-    ul {
-      li {
-        margin-bottom: 20px;
-      }
-    }
+  &:hover {
+    background-color: gray;
   }
 }
 
@@ -94,6 +36,10 @@
   flex-direction: column;
   gap: 10px;
   position: relative;
+  padding: 30px;
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: $transparent-black;
 
   .favorit-list-title {
     text-align: center;

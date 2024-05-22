@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <p>
+      <p className="home-center">
         You've devoured <span>{state.completed.length} books</span>, immersing
         yourself in a total of <span>{totalPages} pages</span>. You're a true
         bookworm, journeying through realms of imagination and knowledge with
@@ -18,11 +18,16 @@ const Home = () => {
       </p>
       <div className="average-info">
         <div>
-          Average pages per book:{" "}
-          <span>{averagePages ? averagePages : "0"}</span>
+          <p className="rolling-text">
+            Average pages per book:{" "}
+            <span>{averagePages ? averagePages : "0"}</span>
+          </p>
         </div>
         <div>
-          Average ratings: <span>{averageRatings ? averageRatings : "0"}</span>
+          <p className="rolling-text">
+            Average rating per book:{" "}
+            <span>{averageRatings ? averageRatings : "0"}</span>
+          </p>
         </div>
       </div>
     </div>
