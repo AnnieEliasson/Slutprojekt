@@ -11,3 +11,28 @@
     color: goldenrod;
   }
 }
+
+.RatingController {
+  ul {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+
+    .star {
+      transition: all 0.3s ease;
+      padding: 10px;
+      font-size: 2rem;
+
+      &:hover {
+        font-size: 3rem;
+        text-shadow: 2px 2px 2px black, 0px 0px 15px rgb(252, 252, 224);
+      }
+
+      &:active {
+        font-size: 4rem;
+      }
+    }
+  }
+}

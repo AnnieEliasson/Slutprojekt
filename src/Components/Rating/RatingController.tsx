@@ -31,7 +31,6 @@ const RatingController = ({
   }, [rating]);
 
   const handleClick = (e: any) => {
-    console.log(e.target.value, "star");
     setCompletedBook({
       ...state.activeBook,
       review: completedBook.review,
