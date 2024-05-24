@@ -1,10 +1,25 @@
 import { NavLink } from "react-router-dom";
 import Search from "../Search/Search";
-import { RemoveClass } from "../../Utility/utility";
+import { RemoveClass, Toggle } from "../../Utility/utility";
+import { useContext, useEffect } from "react";
+import { BookContext } from "../../ContextProvider/BookContextProvider";
 
 const navlinks = ["Home", "Favorites", "Completed"];
 
 const NavBar = () => {
+  const { state } = useContext(BookContext);
+
+  useEffect(() => {
+    const completedMenuBtn = document.getElementById(
+      "Completed"
+    ) as HTMLElement;
+
+    if (state.completed.length) completedMenuBtn.classList.add("addCompleted");
+
+    if (completedMenuBtn.classList.contains("active"))
+      completedMenuBtn.classList.remove("addCompleted");
+  }, [state.completed]);
+
   const handleClick = () => {
     const searchContainer = document.querySelector(
       ".SearchContainer"
@@ -32,6 +47,7 @@ const NavBar = () => {
             <li key={navlink}>
               <NavLink
                 to={`/${navlink.toLocaleLowerCase()}`}
+                id={navlink}
                 className={({ isActive }) => (isActive ? "active" : "")}
                 onClick={handleClick}
               >

@@ -35,5 +35,17 @@
     .active {
       color: $bookmark-color;
     }
+
+    .addCompleted {
+      position: relative;
+      &::after {
+        content: "new";
+        font-size: 0.8rem;
+        position: absolute;
+        top: -10px;
+        right: 0px;
+        color: goldenrod;
+      }
+    }
   }
 }

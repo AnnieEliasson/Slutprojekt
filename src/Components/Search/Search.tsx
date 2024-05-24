@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { useFetch } from "../../Hooks/useFetch";
 import SearchListItem from "./SearchListItem/SearchListItem";
 import { Toggle } from "../../Utility/utility";
@@ -8,7 +8,7 @@ import Bookmark from "../Bookmark/Bookmark";
 import Books from "./Book/Book";
 
 const Search = () => {
-  const { dispatch } = useContext(BookContext);
+  const { state, dispatch } = useContext(BookContext);
 
   const [searchInput, setSearchInput] = useState("");
   const [spinner, setSpinner] = useState(false);
@@ -47,6 +47,13 @@ const Search = () => {
       url = `https://openlibrary.org/search/authors.json?q=j%20k%20rowling`;
       setUrlSwitch(true);
     }
+  };
+
+  const handleClickAdd = (result: Author) => {
+    dispatch({
+      type: "TOGGLE_AUTHOR_FAVORITE",
+      payload: result,
+    });
   };
 
   return (
@@ -109,17 +116,13 @@ const Search = () => {
                       <h2>{result.name}</h2>
                       <p>Birth date: {result.birth_date}</p>
                       <p>Top work: {result.top_work}</p>
+
                       <button
                         id={result.key}
                         className="favorite-btn"
-                        onClick={() => {
-                          dispatch({
-                            type: "TOGGLE_AUTHOR_FAVORITE",
-                            payload: result,
-                          });
-                        }}
+                        onClick={() => handleClickAdd(result)}
                       >
-                        add
+                        Favorit
                       </button>
                     </div>
                   </div>
