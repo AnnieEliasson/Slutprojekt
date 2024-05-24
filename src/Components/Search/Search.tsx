@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { useFetch } from "../../Hooks/useFetch";
 import SearchListItem from "./SearchListItem/SearchListItem";
 import { Toggle } from "../../Utility/utility";
@@ -8,7 +8,7 @@ import Bookmark from "../Bookmark/Bookmark";
 import Books from "./Book/Book";
 
 const Search = () => {
-  const { state, dispatch } = useContext(BookContext);
+  const { dispatch } = useContext(BookContext);
 
   const [searchInput, setSearchInput] = useState("");
   const [spinner, setSpinner] = useState(false);

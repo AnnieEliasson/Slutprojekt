@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Search from "../Search/Search";
-import { RemoveClass, Toggle } from "../../Utility/utility";
+import { RemoveClass } from "../../Utility/utility";
 import { useContext, useEffect } from "react";
 import { BookContext } from "../../ContextProvider/BookContextProvider";
 
